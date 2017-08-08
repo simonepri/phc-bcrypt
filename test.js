@@ -16,3 +16,16 @@ test('should not verify a wrong password with bcrypt', async t => {
   t.true(typeof hash === 'string');
   t.false(await pify(m.verify)(hash, 'hello world'));
 });
+
+test.serial('should throw an error trying to hash a non valid string', async t => {
+  let err = await t.throws(pify(m.hash)(undefined, {func: 'bcrypt'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)('', {func: 'bcrypt'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(['unicorn'], {func: 'bcrypt'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(() => console.log('lalala'), {func: 'bcrypt'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(null, {func: 'bcrypt'}));
+  t.true(err instanceof Error);
+});
