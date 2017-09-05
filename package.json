@@ -1,7 +1,7 @@
 {
   "name": "credential-plus-bcrypt",
-  "version": "2.0.0",
-  "description": "bcrypt hash function implementation for credential-plus",
+  "version": "2.0.2",
+  "description": "BCrypt password hashing function for credential-plus",
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^1.0.2",
