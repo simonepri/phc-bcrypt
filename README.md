@@ -23,6 +23,8 @@
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/simonepri/credential-plus-bcrypt.svg)](https://greenkeeper.io/)
+
 ```
 $ npm install --save credential-plus-bcrypt
 ```
