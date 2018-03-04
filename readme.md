@@ -89,19 +89,16 @@ npm install --save @upash/bcrypt
 ```js
 const bcrypt = require('@upash/bcrypt');
 
-// Hash and verify with bcrypt using default secure configs
-bcrypt.hash('We are all unicorns')
-  .then(hash => {
-    console.log(hash);
-    // => "$2a$10$PZX.QOaC23saRE4L5Cp2XuxVVkPKG/LwLaaG7m8LV0EBhJwloGXPy"
-    // You can store this directly in your database.
+// Hash and verify with bcrypt using default secure configs.
+const hash = await bcrypt.hash('We are all unicorns');
+console.log(hash);
+// => "$2a$10$PZX.QOaC23saRE4L5Cp2XuxVVkPKG/LwLaaG7m8LV0EBhJwloGXPy"
+// You can store this directly in your database.
 
-    bcrypt.verify(hash, 'We are all unicorns')
-      .then(match => {
-        console.log(match);
-        // => true
-      });
-  });
+// Then you can verify against it in this way.
+const match = await bcrypt.verify(hash, 'We are all unicorns');
+console.log(match);
+// => true
 ```
 
 ## API
