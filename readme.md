@@ -50,6 +50,10 @@
 
   <br/>
 
+  <!-- Mentioned - Awesome NodeJS -->
+  <a href="https://github.com/sindresorhus/awesome-nodejs#security">
+    <img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome NodeJS" />
+  </a>
   <!-- Version - npm -->
   <a href="https://www.npmjs.com/package/@upash/bcrypt">
     <img src="https://img.shields.io/npm/v/@upash/bcrypt.svg" alt="Latest version on npm" />
