@@ -1,6 +1,6 @@
 {
   "name": "@upash/bcrypt",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Easy to use Unified API for bcrypt password hashing algorithm",
   "license": "MIT",
   "homepage": "https://github.com/simonepri/upash-bcrypt#readme",
