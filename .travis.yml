@@ -2,9 +2,17 @@ sudo: false
 language: node_js
 node_js:
   - '8'
+  - '7'
   - '6'
+  - '5'
   - '4'
-after_success: npm run coverage
+script:
+  - npm run test
+after_success:
+  - npx codecov
 cache:
   directories:
   - node_modules
+os:
+  - linux
+  - osx

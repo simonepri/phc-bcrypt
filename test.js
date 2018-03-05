@@ -1,44 +1,54 @@
 import test from 'ava';
 
-import m from 'credential-plus';
+import m from '.';
 
-m.install(require('.'));
+test('should verify a correct password', async t => {
+  const hash = await m.hash('hello world');
 
-test('should verify a correct password with bcrypt', async t => {
-  const hash = await m.hash('hello world', {func: 'bcrypt'});
-  t.true(typeof hash === 'string');
+  t.is(typeof hash, 'string');
   t.true(await m.verify(hash, 'hello world'));
 });
 
-test('should not verify a wrong password with bcrypt', async t => {
-  const hash = await m.hash('Hello world', {func: 'bcrypt'});
-  t.true(typeof hash === 'string');
+test('should not verify a wrong password', async t => {
+  const hash = await m.hash('Hello world');
+
+  t.is(typeof hash, 'string');
   t.false(await m.verify(hash, 'hello world'));
 });
 
-test.serial('should throw an error trying to hash a non valid string', async t => {
-  let err = await t.throws(m.hash(undefined, {func: 'bcrypt'}));
-  t.true(err instanceof Error);
-  err = await t.throws(m.hash('', {func: 'bcrypt'}));
-  t.true(err instanceof Error);
-  err = await t.throws(m.hash(['unicorn'], {func: 'bcrypt'}));
-  t.true(err instanceof Error);
-  err = await t.throws(m.hash(() => console.log('lalala'), {func: 'bcrypt'}));
-  t.true(err instanceof Error);
-  err = await t.throws(m.hash(null, {func: 'bcrypt'}));
-  t.true(err instanceof Error);
+test('should throw an error trying to hash a non valid password string', async t => {
+  let err = await t.throws(m.hash(undefined));
+  t.is(err.message, 'Password must be a non-empty string.');
+  err = await t.throws(m.hash(null));
+  t.is(err.message, 'Password must be a non-empty string.');
+  err = await t.throws(m.hash(''));
+  t.is(err.message, 'Password must be a non-empty string.');
 });
 
-test('should throw an error trying to verify a non valid string', async t => {
-  const hash = await m.hash('Hello world', {func: 'bcrypt'});
+test('should throw an error trying to verify a non valid password string', async t => {
+  const hash = await m.hash('Hello world');
+
   let err = await t.throws(m.verify(hash, undefined));
-  t.true(err instanceof Error);
-  err = await t.throws(m.verify(hash, ''));
-  t.true(err instanceof Error);
-  err = await t.throws(m.verify(hash, ['unicorn']));
-  t.true(err instanceof Error);
-  err = await t.throws(m.verify(hash, () => console.log('lalala')));
-  t.true(err instanceof Error);
+  t.is(err.message, 'Password must be a non-empty string.');
   err = await t.throws(m.verify(hash, null));
-  t.true(err instanceof Error);
+  t.is(err.message, 'Password must be a non-empty string.');
+  err = await t.throws(m.verify(hash, ''));
+  t.is(err.message, 'Password must be a non-empty string.');
+});
+
+test('should throw an error trying to verify with a non valid hash', async t => {
+  let err = await t.throws(m.verify(undefined, 'Hello World'));
+  t.is(err.message, 'Hash must be a non-empty string.');
+  err = await t.throws(m.verify(null, 'Hello World'));
+  t.is(err.message, 'Hash must be a non-empty string.');
+  err = await t.throws(m.verify('', 'Hello World'));
+  t.is(err.message, 'Hash must be a non-empty string.');
+});
+
+test('should throw an error trying to hash passing invalid options', async t => {
+  await t.notThrows(m.hash('Hello world'), undefined);
+  await t.notThrows(m.hash('Hello world'), null);
+
+  const err = await t.throws(m.hash('Hello world', ''));
+  t.is(err.message, 'Options must be an object.');
 });

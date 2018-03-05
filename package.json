@@ -1,68 +1,55 @@
 {
-  "name": "credential-plus-bcrypt",
-  "version": "2.0.2",
-  "description": "BCrypt password hashing function for credential-plus",
+  "name": "@upash/bcrypt",
+  "version": "0.0.0",
+  "description": "Easy to use Unified API for bcrypt password hashing algorithm",
+  "license": "MIT",
+  "homepage": "https://github.com/simonepri/upash-bcrypt#readme",
+  "repository": "github:simonepri/upash",
+  "bugs": {
+    "url": "https://github.com/simonepri/upash-bcrypt/issues",
+    "email": "simonepri@outlook.com"
+  },
+  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
+  "contributors": [
+    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
+  ],
+  "keywords": [],
   "main": "index.js",
-  "dependencies": {
-    "bcrypt": "^1.0.2",
-    "lodash": "^4.17.4"
-  },
-  "devDependencies": {
-    "ava": "*",
-    "codecov": "^2.2.0",
-    "nyc": "^11.0.3",
-    "xo": "*",
-    "credential-plus": "2.x"
-  },
+  "files": [
+    "index.js"
+  ],
   "engines": {
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && nyc ava --verbose",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov"
+    "test": "xo &&nyc ava",
+    "release": "np",
+    "update": "npm-check -u"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonepri/credential-plus-bcrypt.git"
+  "publishConfig": {
+    "access": "public"
   },
-  "author": {
-    "name": "Simone Primarosa",
-    "email": "simone.pri@hotmail.it"
+  "dependencies": {
+    "bcrypt": "^1.0.2"
   },
-  "keywords": [
-    "credential plus",
-    "credential",
-    "password",
-    "passwords",
-    "hashing",
-    "verification",
-    "hash function",
-    "hash",
-    "auth",
-    "authorization",
-    "authentication",
-    "security",
-    "login",
-    "sign in",
-    "salt",
-    "rainbow",
-    "brute",
-    "brute force",
-    "attack",
-    "stretching",
-    "timining attack",
-    "PBKDF",
-    "PBKDF2",
-    "bcrypt",
-    "scrypt",
-    "argon2"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/simonepri/credential-plus-bcrypt/issues"
+  "devDependencies": {
+    "ava": "*",
+    "np": "*",
+    "npm-check": "*",
+    "nyc": "*",
+    "xo": "*"
   },
-  "homepage": "https://github.com/simonepri/credential-plus-bcrypt#readme",
+  "ava": {
+    "verbose": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcovonly",
+      "text"
+    ]
+  },
   "xo": {
+    "prettier": true,
     "space": true
   }
 }
