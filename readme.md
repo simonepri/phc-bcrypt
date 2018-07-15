@@ -142,7 +142,7 @@ Micron Technology Inc.  LPDDR3  4294.967 MB  1867 MHz
 </details>
 
 <details>
-<summary><strong>Default options</strong> - <i>{cost:10}</i> ↴</summary>
+<summary><strong>Default options</strong> - <i>{rounds:10}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
