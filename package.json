@@ -1,6 +1,6 @@
 {
   "name": "@phc/bcrypt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Node.JS bcrypt password hashing algorithm following the PHC string format",
   "license": "MIT",
   "homepage": "https://github.com/simonepri/phc-bcrypt#readme",
