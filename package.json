@@ -1,0 +1,89 @@
+{
+  "name": "@phc/bcrypt",
+  "version": "1.0.0",
+  "description": "Node.JS bcrypt password hashing algorithm following the PHC string format",
+  "license": "MIT",
+  "homepage": "https://github.com/simonepri/phc-bcrypt#readme",
+  "repository": "github:simonepri/phc-bcrypt",
+  "bugs": {
+    "url": "https://github.com/simonepri/phc-bcrypt/issues",
+    "email": "simonepri@outlook.com"
+  },
+  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
+  "contributors": [
+    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
+  ],
+  "keywords": [
+    "brute",
+    "brute force",
+    "credential",
+    "credential-plus",
+    "crypto",
+    "hash",
+    "function",
+    "hashing",
+    "password",
+    "password-bcrypt",
+    "passwords",
+    "bcrypt",
+    "bcrypt-password",
+    "psswrd",
+    "pswd",
+    "rainbow",
+    "safe",
+    "safe",
+    "salt",
+    "secure",
+    "security",
+    "stretching",
+    "strong",
+    "timining",
+    "attack",
+    "verification",
+    "verify"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "bench": "node bench.js",
+    "test": "xo &&nyc ava",
+    "release": "np",
+    "update": "npm-check -u"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@kdf/salt": "^1.0.0",
+    "@phc/format": "^0.5.0",
+    "bcrypt": "^3.0.0",
+    "tsse": "^1.1.5"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "execa": "^0.10.0",
+    "np": "*",
+    "npm-check": "*",
+    "nyc": "*",
+    "sympact": "0.0.7",
+    "xo": "*"
+  },
+  "ava": {
+    "verbose": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcovonly",
+      "text"
+    ]
+  },
+  "xo": {
+    "prettier": true,
+    "space": true
+  }
+}
