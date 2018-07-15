@@ -73,7 +73,7 @@ function hash(password, options) {
 
   return gensalt(saltSize).then(salt => {
     const bb64salt = bb64.encode(salt);
-    const padrounds = String(rounds).padStart(2, '0');
+    const padrounds = rounds > 9 ? Number(rounds) : '0' + rounds;
     const decver = String.fromCharCode(version);
     const parstr = `$2${decver}$${padrounds}$${bb64salt}`;
     return bcrypt.hash(password, parstr).then(enchash => {
@@ -160,7 +160,7 @@ function verify(phcstr, password) {
   // const keylen = phcobj.hash.byteLength;
 
   const bb64salt = bb64.encode(salt);
-  const padrounds = String(rounds).padStart(2, '0');
+  const padrounds = rounds > 9 ? Number(rounds) : '0' + rounds;
   const decver = String.fromCharCode(version);
   const parstr = `$2${decver}$${padrounds}$${bb64salt}`;
   return bcrypt.hash(password, parstr).then(enchash => {
